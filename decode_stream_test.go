@@ -13,7 +13,7 @@ import (
 func getTestFrame(tb testing.TB, protoType Type, minCommandLength int) []byte {
 	tb.Helper()
 	ch := make([]byte, minCommandLength)
-	for i := 0; i < minCommandLength; i++ {
+	for i := range minCommandLength {
 		ch[i] = 'a'
 	}
 	cmd := &Command{

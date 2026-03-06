@@ -2,6 +2,7 @@ package protocol
 
 import (
 	"io"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -44,11 +45,11 @@ func TestJSONCommandDecoder_Decode_Single_ExtraNewLine(t *testing.T) {
 }
 
 func TestJSONCommandDecoder_Decode_Large(t *testing.T) {
-	var s string
-	for i := 0; i < 200000; i++ {
-		s += "1"
+	var s strings.Builder
+	for range 200000 {
+		s.WriteString("1")
 	}
-	data := []byte(`{"id": 1, "x": "` + s + `"}`)
+	data := []byte(`{"id": 1, "x": "` + s.String() + `"}`)
 	decoder := GetCommandDecoder(TypeJSON, data)
 	commands := readCommands(t, decoder)
 	require.Len(t, commands, 1)
