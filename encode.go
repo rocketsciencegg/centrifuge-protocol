@@ -616,7 +616,7 @@ func (e *ProtobufCommandEncoder) Encode(cmd *Command) ([]byte, error) {
 
 // ParamsEncoder ...
 type ParamsEncoder interface {
-	Encode(request interface{}) ([]byte, error)
+	Encode(request any) ([]byte, error)
 }
 
 var _ ParamsEncoder = NewJSONParamsEncoder()
@@ -630,7 +630,7 @@ func NewJSONParamsEncoder() *JSONParamsEncoder {
 }
 
 // Encode ...
-func (d *JSONParamsEncoder) Encode(r interface{}) ([]byte, error) {
+func (d *JSONParamsEncoder) Encode(r any) ([]byte, error) {
 	return fastJSON.Marshal(r)
 }
 
@@ -649,7 +649,7 @@ type vtMarshaler interface {
 }
 
 // Encode ...
-func (d *ProtobufParamsEncoder) Encode(r interface{}) ([]byte, error) {
+func (d *ProtobufParamsEncoder) Encode(r any) ([]byte, error) {
 	m, ok := r.(vtMarshaler)
 	if !ok {
 		return nil, fmt.Errorf("can not marshal type %T to Protobuf", r)

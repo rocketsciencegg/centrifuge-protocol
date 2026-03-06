@@ -714,7 +714,7 @@ func (d *ProtobufReplyDecoder) Decode() (*Reply, error) {
 
 // ResultDecoder ...
 type ResultDecoder interface {
-	Decode([]byte, interface{}) error
+	Decode([]byte, any) error
 }
 
 var _ ResultDecoder = NewJSONResultDecoder()
@@ -728,7 +728,7 @@ func NewJSONResultDecoder() *JSONResultDecoder {
 }
 
 // Decode ...
-func (e *JSONResultDecoder) Decode(data []byte, dst interface{}) error {
+func (e *JSONResultDecoder) Decode(data []byte, dst any) error {
 	_, err := json.Parse(data, dst, json.ZeroCopy)
 	return err
 }
@@ -748,7 +748,7 @@ type vtUnmarshaler interface {
 }
 
 // Decode ...
-func (e *ProtobufResultDecoder) Decode(data []byte, dst interface{}) error {
+func (e *ProtobufResultDecoder) Decode(data []byte, dst any) error {
 	m, ok := dst.(vtUnmarshaler)
 	if !ok {
 		return fmt.Errorf("can not unmarshal type from Protobuf")

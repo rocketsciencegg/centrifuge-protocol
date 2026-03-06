@@ -10,7 +10,7 @@ import (
 func benchPayload() []byte {
 	size := 256
 	var p []byte
-	for i := 0; i < size; i++ {
+	for range size {
 		p = append(p, 'i')
 	}
 	return []byte(`{"input":"` + string(p) + `"}`)
