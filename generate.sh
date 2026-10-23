@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # brew install protobuf
-# go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
-# go install github.com/planetscale/vtprotobuf/cmd/protoc-gen-go-vtproto@latest
-# go install github.com/fatih/gomodifytags@v1.13.0
-# go install github.com/FZambia/gomodifytype@latest
-# go install github.com/mailru/easyjson/easyjson@v0.7.7
+# go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.36.12
+# go install github.com/planetscale/vtprotobuf/cmd/protoc-gen-go-vtproto@v0.6.0
+# go install github.com/fatih/gomodifytags@v1.17.0
+# go install github.com/FZambia/gomodifytype@v0.0.0-20210512075931-2bcb28c5dd7e
+# go install github.com/mailru/easyjson/easyjson@v0.9.2
 
 which protoc
 which gomodifytype
