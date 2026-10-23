@@ -2,7 +2,7 @@ name: build
 on:
   pull_request:
     branches:
-      - master
+      - main
       - v[0-9]*.*
     types:
       - opened
